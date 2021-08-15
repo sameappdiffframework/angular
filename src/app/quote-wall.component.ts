@@ -9,10 +9,7 @@ import { Quote, QuotesService } from './service/quotes.service';
                        class="quote"
                        [quote]="quote">
       </sadf-quote-card>
-      <sadf-quote-card *ngFor="let quote of [].constructor(getNumberOfEmptyCards())"
-                       class="quote hidden"
-                       [quote]="undefined">
-      </sadf-quote-card>
+      <sadf-create-quote-btn class="quote" (quoteCreated)="refreshQuotes()"></sadf-create-quote-btn>
     </div>
   `,
   styleUrls: ['./quote-wall.component.scss']
@@ -24,9 +21,7 @@ export class QuoteWallComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.quotesSvc.getQuotes()
-      .subscribe(quotes => this.quotes = quotes);
-
+    this.refreshQuotes();
   }
 
   public getNumberOfEmptyCards(): number {
@@ -36,5 +31,10 @@ export class QuoteWallComponent implements OnInit {
     const quotesPerRow = 3;
     const leftoverquotes = this.quotes.length % quotesPerRow;
     return leftoverquotes === 0 ? leftoverquotes : quotesPerRow - leftoverquotes;
+  }
+
+  public refreshQuotes(): void {
+    this.quotesSvc.getQuotes()
+      .subscribe(quotes => this.quotes = quotes);
   }
 }
