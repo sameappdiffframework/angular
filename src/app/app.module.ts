@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { CardWallComponent } from './card-wall.component';
+import { NavComponent } from './nav.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    CardWallComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [CardWallComponent, NavComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

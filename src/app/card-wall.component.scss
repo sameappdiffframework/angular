@@ -1,0 +1,15 @@
+.notes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.note {
+  flex-basis: 25%;
+  min-width: 100px;
+  min-height: 100px;
+  background-color: #ffc;
+  border: 1px solid black;
+  text-align: center;
+}
