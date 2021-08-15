@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
     <nav>
       <ul>
         <li>
-          <a routerLink="/">All notes</a>
+          <a routerLink="/">All quotes</a>
         </li>
         <li>
           <a routerLink="/">About</a>
@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
       </ul>
 
       <div class="search">
-        <input type="text" placeholder="Search notes"/>
+        <input type="text" placeholder="Search quotes"/>
         <img src="/assets/search.png"/>
       </div>
     </nav>

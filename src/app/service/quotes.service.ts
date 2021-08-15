@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export interface Note {
-  title: string;
-  body: string;
+export interface Quote {
+  artist: string;
+  quote: string;
+  source: string;
 }
 
 @Injectable({ providedIn: 'root' })
-export class NotesService {
+export class QuotesService {
   public constructor(private httpClient: HttpClient) {
   }
 
-  public getNotes(): Observable<Note[]> {
-    return this.httpClient.get<Note[]>('/assets/notes.json');
+  public getQuotes(): Observable<Quote[]> {
+    return this.httpClient.get<Quote[]>('/assets/quotes.json');
   }
 }

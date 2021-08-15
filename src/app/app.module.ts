@@ -3,15 +3,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { CardWallComponent } from './card-wall.component';
+import { QuoteWallComponent } from './quote-wall.component';
+import { QuoteCardComponent } from './quote-card.component';
 import { NavComponent } from './nav.component';
-import { NotesService } from './service/notes.service';
+import { QuotesService } from './service/quotes.service';
 
 @NgModule({
-  declarations: [CardWallComponent, NavComponent],
+  declarations: [QuoteWallComponent, NavComponent, QuoteCardComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, CommonModule],
-  providers: [NotesService],
-  bootstrap: [CardWallComponent, NavComponent]
+  providers: [QuotesService],
+  bootstrap: [QuoteWallComponent, NavComponent]
 })
 export class AppModule {
 }
