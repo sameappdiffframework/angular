@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ViewContainerRef } from '@angular/core';
+import { CreateQuoteFormComponent } from './create-quote-form.component';
+import { ModalService } from './modal/modal.service';
 import { Quote, QuotesService } from './service/quotes.service';
 
 @Component({
@@ -12,18 +14,20 @@ export class CreateQuoteButtonComponent {
   @Output()
   public quoteCreated: EventEmitter<void> = new EventEmitter<void>();
 
-  public constructor(private quoteSvc: QuotesService) {
+  public constructor(
+    private quoteSvc: QuotesService,
+    private modalSvc: ModalService,
+    private viewContainerRef: ViewContainerRef
+  ) {
   }
 
   public createQuote(): void {
     const newQuote: Quote = {
       quote: 'Look how they hate me but copy me. ' +
-        'Possibly I was the one with components and properties ' +
-        'to be the greatest of all time, but you won geography lottery.',
+        'Possibly I was the one with components and properties to be the greatest of all time, but you won geography lottery.',
       artist: 'Big K.R.I.T.',
       source: 'Big K.R.I.T.'
     }
-    this.quoteSvc.createQuote(newQuote)
-      .subscribe(_ => this.quoteCreated.emit());
+    this.modalSvc.open(this.viewContainerRef, CreateQuoteFormComponent);
   }
 }

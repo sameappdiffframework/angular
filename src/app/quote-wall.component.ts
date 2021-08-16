@@ -24,15 +24,6 @@ export class QuoteWallComponent implements OnInit {
     this.refreshQuotes();
   }
 
-  public getNumberOfEmptyCards(): number {
-    if (!this.quotes) {
-      return 0;
-    }
-    const quotesPerRow = 3;
-    const leftoverquotes = this.quotes.length % quotesPerRow;
-    return leftoverquotes === 0 ? leftoverquotes : quotesPerRow - leftoverquotes;
-  }
-
   public refreshQuotes(): void {
     this.quotesSvc.getQuotes()
       .subscribe(quotes => this.quotes = quotes);
