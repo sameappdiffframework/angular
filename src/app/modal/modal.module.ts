@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ModalContainerComponent } from './modal-container.component';
 import { ModalService } from './modal.service';
-import { ModalComponent } from './modal.component';
 
 @NgModule({
-  declarations: [ModalComponent],
+  declarations: [ModalContainerComponent],
+  imports: [BrowserModule],
   providers: [ModalService]
 })
 export class ModalModule {
