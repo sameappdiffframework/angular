@@ -9,7 +9,7 @@ export interface Quote {
   source: string;
 }
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class QuotesService {
   private inMemoryQuotes: Quote[] = [];
 

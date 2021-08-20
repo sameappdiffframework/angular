@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Quote, QuotesService } from './service/quotes.service';
+import { Quote, QuotesService } from './quotes.service';
 
 @Component({
   selector: 'sadf-quote-wall',

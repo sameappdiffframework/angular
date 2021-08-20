@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Quote } from './service/quotes.service';
+import { Quote } from './quotes.service';
 
 @Component({
   selector: 'sadf-quote-card',

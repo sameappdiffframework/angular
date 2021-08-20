@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output, ViewContainerRef } from '@angular/core';
 import { CreateQuoteFormComponent } from './create-quote-form.component';
-import { ModalService } from './modal/modal.service';
-import { Quote, QuotesService } from './service/quotes.service';
+import { ModalService } from '../modal/modal.service';
+import { Quote, QuotesService } from '../quotes/quotes.service';
 
 @Component({
   selector: 'sadf-create-quote-btn',
