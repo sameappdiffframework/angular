@@ -28,6 +28,6 @@ export class CreateQuoteButtonComponent {
       artist: 'Big K.R.I.T.',
       source: 'Big K.R.I.T.'
     }
-    this.modalSvc.open(this.viewContainerRef, CreateQuoteFormComponent);
+    this.modalSvc.open(this.viewContainerRef, CreateQuoteFormComponent, ['formSubmitted', 'quoteForm']);
   }
 }

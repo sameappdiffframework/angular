@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, Type } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output, Type } from '@angular/core';
 
 // TODO: add animations
 @Component({
@@ -18,8 +18,10 @@ export class ModalContainerComponent {
   public comp!: Type<any>;
   @Output()
   public closeClicked: EventEmitter<void> = new EventEmitter<void>();
+  public eventNames: string[] = [];
 
   public close(): void {
+    console.log('names', this.eventNames);
     this.closeClicked.emit();
   }
 }

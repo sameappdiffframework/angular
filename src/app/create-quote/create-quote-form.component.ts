@@ -1,9 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Quote } from '../quotes/quotes.service';
 
 @Component({
   selector: 'sadf-create-quote-form',
-  styles: ['input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched { border: 1px solid indianred}'],
+  styles: [
+    'input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched { border: 1px solid indianred}',
+    `
+      :host {
+        background-color: #f9f9f9;
+        max-height: 70%;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0.5em;
+        z-index: 2;
+      }
+    `
+  ],
   template: `
     <h1>Add a quote</h1>
     <form [formGroup]="quoteForm" (ngSubmit)="submit()">
@@ -31,16 +46,25 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 })
 export class CreateQuoteFormComponent {
   public quoteForm: FormGroup = this.formBuilder.group({
-    artist: ['', [Validators.required, Validators.maxLength(100)]],
-    source: ['', [Validators.required, Validators.maxLength(100)]],
-    quote: ['', [Validators.required, Validators.maxLength(300)]]
+    artist: ['', []],
+    source: ['', []],
+    quote: ['', []]
   });
 
-  public constructor(private formBuilder: FormBuilder) {
+  @Output()
+  public formSubmitted: EventEmitter<Quote> = new EventEmitter<Quote>();
+
+  public constructor(private formBuilder: FormBuilder, private element: ElementRef) {
   }
 
   public submit() {
     console.log('submit', this.quoteForm.value);
+    if (this.quoteForm.valid) {
+      this.formSubmitted.emit(this.quoteForm.value);
+      // const event = new Event('closeModal', { bubbles: true });
+      // console.log('dispatchEvent', this.element.nativeElement, event);
+      // this.element.nativeElement.dispatchEvent(event);
+    }
   }
 
   public get artist(): AbstractControl {
