@@ -1,23 +1,11 @@
 import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 import { Quote } from '../quotes/quotes.service';
 
 @Component({
   selector: 'sadf-create-quote-form',
   styles: [
-    'input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched { border: 1px solid indianred}',
-    `
-      :host {
-        background-color: #f9f9f9;
-        max-height: 70%;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 0.5em;
-        z-index: 2;
-      }
-    `
+    'input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched { border: 1px solid indianred}'
   ],
   template: `
     <h1>Add a quote</h1>
@@ -41,6 +29,7 @@ import { Quote } from '../quotes/quotes.service';
         <div *ngIf="quote.errors?.maxlength">Quote must be less than 300 characters long.</div>
       </div>
       <button type="submit">Submit</button>
+      <button (click)="cancel()">Cancel</button>
     </form>
   `
 })
@@ -53,6 +42,8 @@ export class CreateQuoteFormComponent {
 
   @Output()
   public formSubmitted: EventEmitter<Quote> = new EventEmitter<Quote>();
+  @Output()
+  public formCanceled: EventEmitter<void> = new EventEmitter<void>();
 
   public constructor(private formBuilder: FormBuilder, private element: ElementRef) {
   }
@@ -61,10 +52,11 @@ export class CreateQuoteFormComponent {
     console.log('submit', this.quoteForm.value);
     if (this.quoteForm.valid) {
       this.formSubmitted.emit(this.quoteForm.value);
-      // const event = new Event('closeModal', { bubbles: true });
-      // console.log('dispatchEvent', this.element.nativeElement, event);
-      // this.element.nativeElement.dispatchEvent(event);
     }
+  }
+
+  public cancel() {
+    this.formCanceled.emit();
   }
 
   public get artist(): AbstractControl {

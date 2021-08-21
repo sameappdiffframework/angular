@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Output, ViewContainerRef } from '@angular/core';
-import { CreateQuoteFormComponent } from './create-quote-form.component';
-import { ModalService } from '../modal/modal.service';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { ModalOptions, ModalService } from '../modal/modal.service';
 import { Quote, QuotesService } from '../quotes/quotes.service';
+import { CreateQuoteFormComponent } from './create-quote-form.component';
 
 @Component({
   selector: 'sadf-create-quote-btn',
@@ -14,11 +14,7 @@ export class CreateQuoteButtonComponent {
   @Output()
   public quoteCreated: EventEmitter<void> = new EventEmitter<void>();
 
-  public constructor(
-    private quoteSvc: QuotesService,
-    private modalSvc: ModalService,
-    private viewContainerRef: ViewContainerRef
-  ) {
+  public constructor(private quoteSvc: QuotesService, private modalSvc: ModalService) {
   }
 
   public createQuote(): void {
@@ -28,6 +24,12 @@ export class CreateQuoteButtonComponent {
       artist: 'Big K.R.I.T.',
       source: 'Big K.R.I.T.'
     }
-    this.modalSvc.open(this.viewContainerRef, CreateQuoteFormComponent, ['formSubmitted', 'quoteForm']);
+    const options: ModalOptions<CreateQuoteFormComponent> = {
+      closeEmitterNames: ['formSubmitted', 'formCanceled']
+    };
+    this.modalSvc.open(CreateQuoteFormComponent, options)
+      .subscribe(result => {
+        console.log('modal closed', result);
+      });
   }
 }
