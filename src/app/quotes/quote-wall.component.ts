@@ -9,7 +9,7 @@ import { Quote, QuotesService } from './quotes.service';
                        class="quote"
                        [quote]="quote">
       </sadf-quote-card>
-      <sadf-create-quote-btn class="quote" (quoteCreated)="refreshQuotes()"></sadf-create-quote-btn>
+      <sadf-create-quote-btn class="quote" (quoteCreated)="createQuote($event)"></sadf-create-quote-btn>
     </div>
   `,
   styleUrls: ['./quote-wall.component.scss']
@@ -27,5 +27,9 @@ export class QuoteWallComponent implements OnInit {
   public refreshQuotes(): void {
     this.quotesSvc.getQuotes()
       .subscribe(quotes => this.quotes = quotes);
+  }
+
+  public createQuote(quote: Quote): void {
+    this.quotesSvc.createQuote(quote).subscribe(this.refreshQuotes.bind(this));
   }
 }
