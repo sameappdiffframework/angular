@@ -19,6 +19,10 @@ export class CreateQuoteButtonComponent {
 
   public createQuote(): void {
     const options: ModalOptions<CreateQuoteFormComponent> = { closeEmitterNames: ['formSubmitted', 'formCanceled'] };
-    this.modalSvc.open(CreateQuoteFormComponent, options).subscribe((result: Quote) => this.quoteCreated.emit(result));
+    this.modalSvc.open(CreateQuoteFormComponent, options).subscribe((result: Quote) => {
+      if (result) {
+        this.quoteCreated.emit(result);
+      }
+    });
   }
 }
