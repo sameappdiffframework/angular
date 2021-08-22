@@ -6,7 +6,7 @@ import { Quote } from './quotes.service';
   styleUrls: ['./quote-card.component.scss'],
   template: `
     <div *ngIf="quote">
-      <h6>{{quote.artist}}</h6>
+      <h6>{{quote.artist.name}}</h6>
       <p>{{quote.quote}}</p>
     </div>
   `

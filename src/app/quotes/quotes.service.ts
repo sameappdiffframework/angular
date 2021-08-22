@@ -4,9 +4,16 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export interface Quote {
-  artist: string;
   quote: string;
-  source: string;
+  artist: {
+    name: string;
+    url: string;
+  };
+  source: {
+    name: string;
+    url: string;
+    image: string;
+  };
 }
 
 @Injectable()

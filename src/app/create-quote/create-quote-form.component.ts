@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Quote } from '../quotes/quotes.service';
 
@@ -50,12 +50,26 @@ export class CreateQuoteFormComponent {
   @Output()
   public formCanceled: EventEmitter<void> = new EventEmitter<void>();
 
-  public constructor(private formBuilder: FormBuilder, private element: ElementRef) {
+  public constructor(private formBuilder: FormBuilder) {
   }
 
   public submit() {
     if (this.quoteForm.valid) {
-      this.formSubmitted.emit(this.quoteForm.value);
+      const formInput = this.quoteForm.value;
+      // TODO: get urls/images from spotify
+      const quote: Quote = {
+        quote: formInput.quote,
+        artist: {
+          name: formInput.artist,
+          url: ''
+        },
+        source: {
+          name: formInput.source,
+          url: '',
+          image: ''
+        }
+      }
+      this.formSubmitted.emit(quote);
     }
   }
 
