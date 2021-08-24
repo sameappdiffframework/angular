@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/sadf-angular'),
+      dir: require('path').join(__dirname, './coverage/rap-quotes-angular'),
       subdir: '.',
       reporters: [
         { type: 'html' },
