@@ -4,7 +4,7 @@ import { Quote } from '../quotes/quotes.service';
 import { CreateQuoteFormComponent } from './create-quote-form.component';
 
 @Component({
-  selector: 'sadf-create-quote-btn',
+  selector: 'app-create-quote-btn',
   styleUrls: ['create-quote-btn.component.scss'],
   template: `
     <button (click)="createQuote()">Create quote</button>

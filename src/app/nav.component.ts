@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'sadf-nav',
+  selector: 'app-nav',
   styleUrls: ['./nav.component.scss'],
   template: `
     <h1>SADF - Angular</h1>

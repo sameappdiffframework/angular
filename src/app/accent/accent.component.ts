@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'sadf-accent',
+  selector: 'app-accent',
   template: '',
   styles: [`
     :host {

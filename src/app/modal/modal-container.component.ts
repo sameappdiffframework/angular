@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 // TODO: add animations
 @Component({
-  selector: 'sadf-modal',
+  selector: 'app-modal',
   styles: [`
     :host {
       background-color: #f9f9f9;

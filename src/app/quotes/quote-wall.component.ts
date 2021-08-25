@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Quote, QuotesService } from './quotes.service';
 
 @Component({
-  selector: 'sadf-quote-wall',
+  selector: 'app-quote-wall',
   template: `
     <div class="quotes" *ngIf="quotes">
-      <sadf-quote-card *ngFor="let quote of quotes"
+      <app-quote-card *ngFor="let quote of quotes"
                        class="quote"
                        [quote]="quote">
-      </sadf-quote-card>
-      <sadf-create-quote-btn class="quote" (quoteCreated)="createQuote($event)"></sadf-create-quote-btn>
+      </app-quote-card>
+      <app-create-quote-btn class="quote" (quoteCreated)="createQuote($event)"></app-create-quote-btn>
     </div>
   `,
   styleUrls: ['./quote-wall.component.scss']

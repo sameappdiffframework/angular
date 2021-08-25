@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'sadf-root',
+  selector: 'app-root',
   template: `
     <header>header</header>
     <main>main</main>

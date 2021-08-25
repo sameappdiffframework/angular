@@ -3,7 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Quote } from '../quotes/quotes.service';
 
 @Component({
-  selector: 'sadf-create-quote-form',
+  selector: 'app-create-quote-form',
   styles: [`
     input.ng-invalid.ng-touched,
     input.ng-invalid.ng-dirty,

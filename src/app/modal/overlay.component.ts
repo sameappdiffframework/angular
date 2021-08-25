@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'sadf-overlay',
+  selector: 'app-overlay',
   template: ``,
   styles: [`
     :host {

@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Quote } from './quotes.service';
 
 @Component({
-  selector: 'sadf-quote-card',
+  selector: 'app-quote-card',
   styleUrls: ['./quote-card.component.scss'],
   template: `
     <div *ngIf="quote">
