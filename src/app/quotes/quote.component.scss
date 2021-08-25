@@ -1,0 +1,67 @@
+blockquote {
+  background-color: var(--secondary-color);
+  border: 0;
+  position: relative;
+  font-style: italic;
+}
+
+blockquote p:first-child:before {
+  content: '\201C';
+  font-family: Georgia, serif;
+  color: var(--tertiary-color);
+  font-size: 7.5em;
+  font-weight: 700;
+  opacity: .1;
+  position: absolute;
+  top: -.5em;
+  left: -.3em;
+  z-index: 1
+}
+
+blockquote p:first-child:after {
+  content: '\201D';
+  font-family: Georgia, serif;
+  color: var(--tertiary-color);
+  font-size: 7.5em;
+  font-weight: 700;
+  opacity: .1;
+  position: absolute;
+  top: -.45em;
+  right: -.15em;
+  z-index: 1;
+  grid-area: quote;
+}
+
+figcaption {
+  text-align: center;
+  font-size: .8em;
+  grid-area: caption;
+}
+
+figcaption p {
+  margin-bottom: .5em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+figure {
+  flex-basis: 33%;
+  margin: 0;
+  padding: 20px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 4fr 1fr;
+  grid-template-areas:
+    "quote img"
+    "caption img";
+}
+
+figure img {
+  grid-area: img;
+  border: 3px solid var(--tertiary-color);
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  align-self: center;
+  margin: 0 0 0 20px;
+}

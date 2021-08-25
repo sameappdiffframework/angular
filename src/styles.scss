@@ -43,3 +43,12 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0;
 }
+
+a {
+  color: var(--quaternary-color);
+}
+
+a:hover {
+  color: var(--tertiary-color);
+  border-bottom-color: var(--tertiary-color);
+}

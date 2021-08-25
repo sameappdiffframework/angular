@@ -1,35 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { Quote, QuotesService } from './quotes.service';
+import { Component, Input } from '@angular/core';
+import { Quote } from './quotes.service';
 
 @Component({
   selector: 'app-quote-wall',
   template: `
-    <div class="quotes" *ngIf="quotes">
-      <app-quote-card *ngFor="let quote of quotes"
-                       class="quote"
-                       [quote]="quote">
-      </app-quote-card>
-      <app-create-quote-btn class="quote" (quoteCreated)="createQuote($event)"></app-create-quote-btn>
-    </div>
+    <app-quote *ngFor="let quote of quotes" [quote]="quote"></app-quote>
   `,
-  styleUrls: ['./quote-wall.component.scss']
+  styles: [`
+    :host {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  `]
 })
-export class QuoteWallComponent implements OnInit {
+export class QuoteWallComponent {
+  @Input()
   public quotes: Quote[] | undefined = undefined;
-
-  public constructor(private quotesSvc: QuotesService) {
-  }
-
-  public ngOnInit(): void {
-    this.refreshQuotes();
-  }
-
-  public refreshQuotes(): void {
-    this.quotesSvc.getQuotes()
-      .subscribe(quotes => this.quotes = quotes);
-  }
-
-  public createQuote(quote: Quote): void {
-    this.quotesSvc.createQuote(quote).subscribe(this.refreshQuotes.bind(this));
-  }
 }
