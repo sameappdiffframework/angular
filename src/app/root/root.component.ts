@@ -8,7 +8,7 @@ import { Quote, QuotesService } from '../quotes/quotes.service';
   template: `
     <app-header role="heading" (createQuoteClicked)="createQuote()"></app-header>
     <app-quote-wall role="main" *ngIf="quotes" [quotes]="quotes"></app-quote-wall>
-    <footer>footer</footer>
+    <app-footer role="contentinfo"></app-footer>
   `,
   styles: [`
     :host {
