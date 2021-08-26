@@ -5,15 +5,22 @@ import { Quote } from '../quotes/quotes.service';
 @Component({
   selector: 'app-create-quote-form',
   styles: [`
-    input.ng-invalid.ng-touched,
-    input.ng-invalid.ng-dirty,
-    textarea.ng-invalid.ng-touched,
-    textarea.ng-invalid.ng-dirty {
-      border: 1px solid indianred
+    :host {
+      background-color: var(--primary-color);
+      min-height: 30%;
+      max-height: 70%;
+      width: 50%;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 0.5em;
+      z-index: 2;
     }
   `],
   template: `
     <h1>Add a quote</h1>
+    <hr/>
     <form [formGroup]="quoteForm" (ngSubmit)="submit()">
       <label for="artist">Artist</label>
       <input type="text" formControlName="artist" id="artist"/>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CreateQuoteFormComponent } from '../create-quote/create-quote-form.component';
+import { CreateQuoteFormComponent } from '../create-quote-form/create-quote-form.component';
 import { ModalOptions, ModalService } from '../modal/modal.service';
 import { Quote, QuotesService } from '../quotes/quotes.service';
 

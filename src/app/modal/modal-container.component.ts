@@ -4,16 +4,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-modal',
   styles: [`
-    :host {
-      background-color: #f9f9f9;
-      max-height: 70%;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 0.5em;
-      z-index: 2;
-    }  `, `
     :host > button {
       float: right;
     }

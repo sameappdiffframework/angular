@@ -111,6 +111,7 @@ export class ModalService {
     if (typeof instance.showCloseButton === 'boolean') {
       (instance.showCloseButton as boolean) = showCloseBtn;
     }
+    (compRef.location.nativeElement as Element).setAttribute('role', 'dialog');
     this.appRef.attachView(compRef.hostView);
     document.body.appendChild(compRef.location.nativeElement);
     return compRef;
