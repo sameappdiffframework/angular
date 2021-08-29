@@ -6,7 +6,7 @@ import { Quote } from '../quotes/quotes.service';
   selector: 'app-create-quote-form',
   styles: [`
     :host {
-      background-color: var(--primary-color);
+      background-color: var(--bg-color);
       min-height: 30%;
       max-height: 70%;
       width: 50%;
@@ -41,6 +41,7 @@ import { Quote } from '../quotes/quotes.service';
         <div *ngIf="quote.errors?.maxlength">Quote must be less than 100 characters long.</div>
       </div>
       <button type="submit">Submit</button>
+      &nbsp;
       <button (click)="cancel()">Cancel</button>
     </form>
   `

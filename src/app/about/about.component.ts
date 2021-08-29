@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
       display: block;
     }`
   ],
-  preserveWhitespaces: true,
   templateUrl: './about.component.html'
 })
 export class AboutComponent {
