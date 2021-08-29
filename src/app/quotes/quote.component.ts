@@ -6,10 +6,10 @@ import { Quote } from './quotes.service';
   styleUrls: ['./quote.component.scss'],
   template: `
     <figure *ngIf="quote">
-      <img [src]="quote.source.image">
       <blockquote>
         <p>{{quote.quote}}</p>
       </blockquote>
+      <img [src]="quote.source.image">
       <figcaption>
         <p>{{quote.artist.name}}</p>
         <cite>

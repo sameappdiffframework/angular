@@ -3,6 +3,12 @@ import { Quote, QuotesService } from '../quotes/quotes.service';
 
 @Component({
   selector: 'app-home',
+  styles: [`
+    app-quote-wall {
+      padding-left: 26px;
+      display: block;
+    }
+  `],
   template: `
     <app-quote-wall role="main" *ngIf="quotes" [quotes]="quotes"></app-quote-wall>
   `

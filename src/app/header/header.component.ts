@@ -4,31 +4,33 @@ import { Component, EventEmitter, Output } from '@angular/core';
   selector: 'app-header',
   styles: [`
     :host {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid var(--tertiary-color);
-      margin-bottom: 1.5rem;
-      padding-top: .75rem;
-      padding-bottom: .75rem;
+      display: block;
+      height: 0;
+      border-left: 26px solid transparent;
+      border-right: 26px solid transparent;
+      border-top: 40px solid var(--primary-accent);
+    }
+
+    :host a {
+      color: var(--bg-color);
+    }
+
+    :host a:hover {
+      color: var(--secondary-accent);
+      border-bottom: 2px solid var(--secondary-accent);
     }
 
     nav > ul {
-      margin-top: unset;
-      margin-bottom: unset;
-      padding: 5px;
       display: flex;
-      gap: 10px;
-      align-items: center;
+      justify-content: space-around;
     }
 
     nav > ul > li {
-      margin-bottom: unset;
+      text-transform: uppercase;
+      margin-top: -40px;
     }
   `],
   template: `
-    <h1>Rap Quotes</h1>
-
     <nav>
       <ul class="no-bullets">
         <li>

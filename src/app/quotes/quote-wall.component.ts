@@ -4,15 +4,9 @@ import { Quote } from './quotes.service';
 @Component({
   selector: 'app-quote-wall',
   template: `
+    <h1>Rap Quotes</h1>
     <app-quote *ngFor="let quote of quotes" [quote]="quote"></app-quote>
-  `,
-  styles: [`
-    :host {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-  `]
+  `
 })
 export class QuoteWallComponent {
   @Input()

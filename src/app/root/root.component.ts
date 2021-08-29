@@ -9,18 +9,7 @@ import { Quote, QuotesService } from '../quotes/quotes.service';
     <app-header role="heading" (createQuoteClicked)="createQuote()"></app-header>
     <router-outlet></router-outlet>
     <app-footer role="contentinfo"></app-footer>
-  `,
-  styles: [`
-    :host {
-      display: block;
-      background-color: inherit;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-      width: 90vw;
-      margin: 12vh auto;
-      min-height: 75vh;
-      padding: 26px 13px;
-    }
-  `]
+  `
 })
 export class RootComponent implements OnInit {
   public quotes: Quote[] | undefined = undefined;
