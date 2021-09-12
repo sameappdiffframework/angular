@@ -40,7 +40,7 @@ import { Quote } from '../quotes/quotes.service';
         <div *ngIf="quote.errors?.required">Quote is required.</div>
         <div *ngIf="quote.errors?.maxlength">Quote must be less than 100 characters long.</div>
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" [disabled]="!quoteForm.valid">Submit</button>
       &nbsp;
       <button (click)="cancel()">Cancel</button>
     </form>
