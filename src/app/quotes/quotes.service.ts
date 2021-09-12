@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of, Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 export interface Quote {
   quote: string;
@@ -18,20 +18,29 @@ export interface Quote {
 
 @Injectable()
 export class QuotesService {
+  private quotes = new Subject<Quote[]>();
+  private lastRemoteQuotes: Quote[] = [];
   private inMemoryQuotes: Quote[] = [];
 
   public constructor(private httpClient: HttpClient) {
   }
 
   public getQuotes(): Observable<Quote[]> {
-    return this.httpClient.get<Quote[]>('/assets/quotes.json')
+    this.httpClient.get<Quote[]>('/assets/quotes.json')
       .pipe(
-        map(remoteQuotes => remoteQuotes.concat(this.inMemoryQuotes))
-      );
+        tap(remoteQuotes => this.lastRemoteQuotes = remoteQuotes)
+      )
+      .subscribe(this.updateQuotes.bind(this));
+    return this.quotes.asObservable();
   }
 
   public createQuote(quote: Quote): Observable<Quote> {
     this.inMemoryQuotes.push(quote);
+    this.updateQuotes();
     return of(quote);
+  }
+
+  private updateQuotes(): void {
+    this.quotes.next([...this.inMemoryQuotes, ...this.lastRemoteQuotes])
   }
 }

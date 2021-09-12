@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { tap } from 'rxjs/operators';
 import { Quote, QuotesService } from '../quotes/quotes.service';
 
 @Component({
@@ -20,11 +21,8 @@ export class HomeComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.refreshQuotes();
-  }
-
-  public refreshQuotes(): void {
     this.quotesSvc.getQuotes()
+      .pipe(tap(q => console.log('HomeComp', q)))
       .subscribe(quotes => this.quotes = quotes);
   }
 }
